@@ -1,0 +1,8 @@
+test.ts
+test.py
+package.json
+package-lock.json
+/analysis/*
+/node_modules
+test.json
+__pycache__
