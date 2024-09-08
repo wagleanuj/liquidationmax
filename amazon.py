@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 class AmazonScraper:
     def __init__(self, user_agent):
         self.headers = {
@@ -26,6 +27,7 @@ class AmazonScraper:
         if html:
             return self.parse_html(html)
         return None
+
     def extract_product_info(self, soup):
         products = []
         for item in soup.select(".s-main-slot .s-result-item"):
@@ -44,17 +46,15 @@ class AmazonScraper:
                     "product_url": f"https://www.amazon.ca{product_url['href']}",
                     "brand_name": brand_name.get_text(strip=True) if brand_name else "N/A"
                 })
-                
+
         return products
-       
-        
+
     def scrape(self, product_name):
         soup = self.search_product(product_name)
         if soup:
             products = self.extract_product_info(soup)
             return products
         return []
-
 
 
 # if __name__ == "__main__":
@@ -70,3 +70,4 @@ class AmazonScraper:
 #         print(f"Rating: {product['rating']}")
 #         print("---------------")
 #         print(product)
+5
